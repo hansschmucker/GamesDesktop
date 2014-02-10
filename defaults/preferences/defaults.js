@@ -1,0 +1,10 @@
+pref("toolkit.defaultChromeURI", "chrome://data/content/index.xul");
+pref("toolkit.singletonWindowType", "spxultemplateapp1");
+pref("network.protocol-handler.expose-all", false);
+pref("toolkit.defaultChromeFeatures", "chrome,resizable=no,dialog=no");
+pref("network.protocol-handler.warn-external.http", false);
+pref("network.protocol-handler.warn-external.https", false);
+pref("network.protocol-handler.warn-external.ftp", false);
+user_pref("nglayout.debug.disable_xul_cache", true);
+user_pref("nglayout.debug._disable_xul_cache_ex", true);
+user_pref("nglayout.debug.disable_xul_fastload", false);

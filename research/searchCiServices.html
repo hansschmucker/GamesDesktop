@@ -1,0 +1,50 @@
+<html>
+	<head>
+		<script src="CiServices.js"></script>
+		<style>
+			*{
+				padding:0px;
+				margin:0px;
+			}
+			
+			iframe{
+				
+				border:none;
+			}
+		</style>
+		<script>
+			var pos=-1;
+			var list=[];
+			for(var i in CiServices){
+				if(CiServices[i]==-1)
+				list.push({title:i,state:-1});
+				
+			};
+			
+			function loadNext(){
+				pos++;
+				document.querySelector("iframe").src="http://dxr.mozilla.org/mozilla-central/search?tree=mozilla-central&q=regexp%3A%2F%28getService|QueryInterface|createInstance%29\\s*\\%28\\s*%28Components\\.interfaces|Ci%29\\s*\\.\\s*"+list[pos].title.split(",")[1]+"\\s*\\%29%2F";
+			}
+			
+			function answer(r){
+				list[pos].state=r;
+				CiServices[list[pos].title]=r;
+				document.querySelector("pre").textContent+="\n"+list[pos].title+" : "+list[pos].state;
+				loadNext();
+			}
+
+			window.onload=loadNext;
+
+		</script>
+	</head>
+	<body>
+		<iframe width="100%" height="50%" src="http://dxr.mozilla.org/mozilla-central/search?tree=mozilla-central&q=regexp%3A%2F%28getService|QueryInterface|createInstance%29\s*\%28\s*%28Components\.interfaces|Ci%29\s*\.\s*nsIDroppedLinkHandler\s*\%29%2F"></iframe>
+		<div>
+			<input type="button" value="Service" onclick="answer(1)" />
+			<input type="button" value="Instance" onclick="answer(0)" />
+			<input type="button" value="Undefined" onclick="answer(-2)" />
+		</div>
+		<pre></pre>
+	</body>
+</html>	
+			

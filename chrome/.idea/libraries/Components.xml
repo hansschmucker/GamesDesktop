@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Components" type="javaScript">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../Components.interfaces/Components.doc.js" />
+      <root url="file://$PROJECT_DIR$/../../Components.interfaces/Interfaces.doc.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>

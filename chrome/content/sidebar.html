@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>GamesDesktop</title>
+        <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+        <script>
+            var msg="";
+            var log=null;
+            function info(str){
+                log.textContent+=str+"\n";
+            }
+        </script>
+        <script src="references/Components.js"></script>
+        <script src="classes/Function.js"></script>
+        <script src="classes/Bound.js"></script>
+        <script src="classes/Eventable.js"></script>
+        <script src="classes/Arrayish.js"></script>
+        <script src="classes/Retriever.js"></script>
+        <script src="classes/DOMRetriever.js"></script>
+        <style>
+            html,body{
+            }
+        </style>
+        <script>
+            window.addEventListener("load",function(evt){
+                var ret=new DOMRetriever("http://www.gog.com/");
+                ret.addEventListener("load",function(evt){
+                    log=document.querySelector("#log");
+
+                    var els=evt.document.querySelector("#newsListH");
+                    var as=els.querySelectorAll("a[href]");
+                    var imgs=els.querySelectorAll("img[src]");
+
+                    for(var i=0;i<as.length;i++){
+                        if(as[i].getAttribute("href").substr(0,7)!="http://")
+                            as[i].setAttribute("href","http://www.gog.com/"+as[i].getAttribute("href"));
+                    }
+                    for(var i=0;i<imgs.length;i++){
+
+                        var src=imgs[i].getAttribute("data-imgsrc");
+
+                        if(!src)
+                            src=imgs[i].getAttribute("src");
+                        if(src.substr(0,7)!="http://")
+                            imgs[i].setAttribute("src","http://www.gog.com/"+src);
+                        else
+                            imgs[i].setAttribute("src",src);
+
+                    }
+
+
+                    document.body.appendChild(els);
+                    var styles=evt.document.querySelectorAll('link[rel="stylesheet"]');
+
+                    var l=[];
+                    for(var i=0;i<styles.length;i++)
+                        l.push(styles[i]);
+                    for(var i=0;i<l.length;i++){
+                        document.body.appendChild(l[i]);
+                    }
+                },false);
+                ret.fetch();
+            },false);
+        </script>
+    </head>
+    <body lang="en-US">
+        <pre id="log"></pre>
+    </body>
+</html>

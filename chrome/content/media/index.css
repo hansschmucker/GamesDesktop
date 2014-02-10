@@ -1,0 +1,33 @@
+*{
+	margin:0px;
+	padding:0px;
+	border:none;
+	min-width:0px;
+	min-height:0px;
+	background:none;	
+}
+
+#title_minimize{
+	background:url(top-04.png);
+}
+#title_minimize:hover{
+	background:url(top-04h.png);
+}
+
+#title_maximize{
+    background:url(top-05.png);
+}
+#title_maximize:hover{
+    background:url(top-05h.png);
+}
+
+#title_close{
+    background:url(top-06.png);
+}
+#title_close:hover{
+    background:url(top-06h.png);
+}
+
+#sidebar{
+    overflow-x:hidden;
+}

@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="media/index.css" type="text/css"?>
+
+<window id="gamesDesktop" title=" " hidechrome="true" width="720" height="480" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	<vbox flex="1">
+		<hbox>
+			<vbox width="8">
+				<resizer height="8" dir="topleft" style="cursor: nw-resize;-moz-appearance:none;background:url(media/topleft.png)" />
+				<resizer height="17" dir="left" style="cursor: w-resize;-moz-appearance:none;background:url(media/left-01.png)" />
+			</vbox>
+			<vbox width="17" >
+				<resizer height="8" dir="top" style="cursor: n-resize;-moz-appearance:none;background:url(media/top-01.png)" />
+				<image height="17"  style="-moz-appearance:none;" src="media/title-01.png" />
+			</vbox>
+			<vbox width="17" >
+				<resizer height="8" dir="top" style="cursor: n-resize;-moz-appearance:none;background:url(media/top-02.png)" />
+				<image height="17" style="-moz-appearance:none;" src="media/title-02.png" />
+			</vbox>
+			<vbox flex="1">
+				<stack height="25">
+					<vbox style="pointer-events:none">
+						<image height="8" style="-moz-appearance:none;" src="media/top-02.png" />
+						<image height="17" style="-moz-appearance:none;pointer-events:none" src="media/title-02.png" />
+					</vbox>
+					<label height="24" style="-moz-appearance:none;background:transparent;color:white;font-face:Segoe UI;font-size:15px;text-align:center;overflow:hidden">GamesDesktop</label>
+					<titlebar style="margin-top:8px" />
+					<resizer height="8" dir="top" style="cursor: n-resize;-moz-appearance:none;background:none;margin-bottom:17px" />
+				</stack>
+			</vbox>
+			<vbox width="26" >
+				<resizer height="1" dir="top" style="cursor: n-resize;-moz-appearance:none;background:url(media/top-03.png)" />
+				<button id="title_minimize" label="" height="24" width="26" style="-moz-appearance:none;width:26px" />
+			</vbox>
+			<vbox width="26" >
+				<resizer height="1" dir="top" style="cursor: n-resize;-moz-appearance:none;background:url(media/top-03.png)" />
+				<button id="title_maximize" label="" height="24" width="26" style="-moz-appearance:none;width:26px" />
+			</vbox>
+			<vbox width="46" >
+				<resizer height="1" dir="top" style="cursor: n-resize;-moz-appearance:none;background:url(media/top-03.png)" />
+				<button id="title_close" label="" height="24" width="46" style="-moz-appearance:none;width:26px" oncommand="window.close()" />
+			</vbox>
+            <vbox width="7">
+                <resizer height="8" dir="topright" style="cursor: ne-resize;-moz-appearance:none;background:url(media/top-07.png)" />
+                <resizer height="17" dir="right" style="cursor: e-resize;-moz-appearance:none;background:url(media/right-02.png)" />
+            </vbox>
+		</hbox>
+		<hbox flex="1">
+			<resizer width="7" dir="left" style="cursor: w-resize;-moz-appearance:none;background:url(media/left-02.png)" />
+			<iframe flex="1" id="content" src="view.html"  />
+            <iframe width="370" id="sidebar" src="sidebar.html"  />
+			<resizer width="7" dir="right" style="cursor: e-resize;-moz-appearance:none;background:url(media/right-02.png)" />
+		</hbox>
+		<hbox height="7">
+			<resizer width="7" dir="bottomleft" style="cursor: sw-resize;-moz-appearance:none;background:url(media/bottom-01.png)" />
+			<resizer flex="1" dir="bottom" style="cursor: s-resize;-moz-appearance:none;background:url(media/bottom-02.png)" />
+			<resizer width="7" dir="bottomright" style="cursor: se-resize;-moz-appearance:none;background:url(media/bottom-01.png)" />
+		</hbox>
+
+	</vbox>
+	
+	<script src="index.js" />
+</window>

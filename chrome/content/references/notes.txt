@@ -1,0 +1,72 @@
+
+								var kernel32 = ctypes.open("Kernel32");
+
+								var STARTUPINFO=new ctypes.StructType("STARTUPINFO",[
+											{ "cb": ctypes.int },
+											{ "lpReserved": ctypes.jschar.ptr },
+											{ "lpDesktop": ctypes.jschar.ptr },
+											{ "lpTitle": ctypes.jschar.ptr },
+											{ "dwX": ctypes.int },
+											{ "dwY": ctypes.int },
+											{ "dwXSize": ctypes.int },
+											{ "dwYSize": ctypes.int },
+											{ "dwXCountChars": ctypes.int },
+											{ "dwYCountChars": ctypes.int },
+											{ "dwFillAttribute": ctypes.int },
+											{ "dwFlags": ctypes.int },
+											{ "wShowWindow": ctypes.int16_t },
+											{ "cbReserved2": ctypes.int16_t },
+											{ "lpReserved2": ctypes.void_t.ptr },
+											{ "hStdInput": ctypes.void_t.ptr },
+											{ "hStdOutput": ctypes.void_t.ptr },
+											{ "hStdError": ctypes.void_t.ptr }
+										]);
+
+								var PROCESS_INFORMATION=new ctypes.StructType("PROCESS_INFORMATION",
+										[ { "hProcess": ctypes.void_t.ptr },
+											{ "hThread": ctypes.void_t.ptr },
+											{ "dwProcessId": ctypes.int },
+											{ "dwThreadId": ctypes.int }
+										]);
+								var CreateProcess=kernel32.declare("CreateProcessW",ctypes.winapi_abi,
+										ctypes.char,
+										ctypes.jschar.ptr,ctypes.jschar.ptr,
+										ctypes.void_t.ptr,ctypes.void_t.ptr,
+										ctypes.char,
+										ctypes.int,
+										ctypes.void_t.ptr,ctypes.jschar.ptr,
+										STARTUPINFO.ptr,PROCESS_INFORMATION.ptr
+								);
+
+								var NULL=new ctypes.void_t.ptr();
+
+								CreateProcess(
+										NULL,cmd,
+										NULL,NULL,
+										0,
+										0,
+										NULL,".",
+										new STARTUPINFO().ptr, new PROCESS_INFORMATION().ptr
+								);
+								/*
+								 BOOL WINAPI CreateProcess(
+								 _In_opt_     LPCTSTR lpApplicationName,
+								 _Inout_opt_  LPTSTR lpCommandLine,
+								 _In_opt_     LPSECURITY_ATTRIBUTES lpProcessAttributes,
+								 _In_opt_     LPSECURITY_ATTRIBUTES lpThreadAttributes,
+								 _In_         BOOL bInheritHandles,
+								 _In_         DWORD dwCreationFlags,
+								 _In_opt_     LPVOID lpEnvironment,
+								 _In_opt_     LPCTSTR lpCurrentDirectory,
+								 _In_         LPSTARTUPINFO lpStartupInfo,
+								 _Out_        LPPROCESS_INFORMATION lpProcessInformation
+								 );
+								 */
+								kernel32.close();
+
+
+
+								html>body>div#mainTemplateHolder>div#t_list.list_h>div#t_norm.favourite_h>div.list_row_h
+
+								div.topic_s{width:auto}
+								div.list_row_odd{width:auto}

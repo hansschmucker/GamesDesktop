@@ -1,0 +1,5 @@
+CRASH: @mozilla.org/audiochannel/service;1
+CRASH: @mozilla.org/downloads/application-reputation-service;1
+CRASH: @mozilla.org/gamepad-test;1
+CRASH: @mozilla.org/places/colorAnalyzer;1
+CRASH: @mozilla.org/startupcache/cache;1

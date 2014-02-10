@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<title>GamesDesktop</title>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+		<style>
+			*{
+				margin:0px;
+				padding:0px;
+                font-family:Calibri;
+			}
+			
+			.Item{
+				width:96px;
+				float:left;
+				margin:4px;
+			}
+			
+			.imageUrl{
+				width:96px;
+				height:128px;
+			}
+			
+			.title{
+                text-align:center;
+				width:96px;
+                height:44px;
+				overflow:hidden;
+				word-break:break-all;
+				line-height:13px;
+				font-size:14px;
+				-moz-hyphens:auto;
+				hyphens:auto;
+			}
+		</style>
+		<script>
+			var msg="";
+			var log=null;
+			function info(str){
+                try{
+                    var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService);
+                    prefs = prefs.getBranch("GamesDesktop.");
+                    var value = prefs.getBoolPref("debug");
+                    info = function(){}
+                    return;
+                }catch(e){
+                    info = function(){}
+                    return;
+                }
+				if(!log) msg+=str+"\n";
+				else log.textContent+=str+"\n";
+			}
+		</script>
+		<script src="references/Components.js"></script>
+		<script src="classes/MiniCacheService.js"></script>
+		<script src="classes/Function.js"></script>
+		<script src="classes/Bound.js"></script>
+		<script src="classes/Eventable.js"></script>
+		<script src="classes/Arrayish.js"></script>
+        <script src="classes/Retriever.js"></script>
+		<script src="classes/DOMRetriever.js"></script>
+		<script src="classes/Item.js"></script>
+		<script src="classes/ViewableItem.js"></script>
+		<script src="classes/ItemCollection.js"></script>
+		<script src="classes/ItemView.js"></script>
+		<script src="classes/RichItemView.js"></script>
+		<script src="classes/GOGGameItem.js"></script>
+		<script src="classes/GOGInstalledLibrary.js"></script>
+		<script>
+            window.addEventListener("load",function(evt){
+
+                try{
+                    log=document.querySelector("#log");
+                    log.textContent+=(msg);
+
+					var lib=new GOGInstalledLibrary(document.querySelector("#content"));
+					lib.addEventListener("mousedown",function(evt){
+						try{
+							info(evt.nativeEvent.button);
+							if(!evt.nativeEvent.button)
+								evt.item.launch();
+						}catch(e){info(e+"\n\n"+ e.stack);}
+					});
+
+                    lib.items.sort(function(a,b){
+                        return (a.getTitle() > b.getTitle());
+                    })
+                }catch(e){info(e+"\n\n"+ e.stack);}
+            },false);
+
+        </script>
+	</head>
+	<body lang="en-US">
+		<div id="content"></div>
+		<pre id="log"></pre>
+	</body>
+</html>
